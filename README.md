@@ -5,3 +5,4 @@
 6. In case plugins don't load, navigate to `lua/mxluk/packer.lua`
 7. `:so` and `:PackerSync`
 8. maybe restart (`:q` and reopen)
+9. `:Copilot setup`
