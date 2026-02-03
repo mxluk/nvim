@@ -17,7 +17,17 @@ return require('packer').startup(function(use)
 
   use({ 'rose-pine/neovim', as = 'rose-pine' })
 
-  use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+  use({
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+      vim.cmd('TSUpdate')
+      -- Install core parsers
+      local parsers = { 'javascript', 'typescript', 'lua', 'vim', 'vimdoc', 'query', 'c' }
+      for _, parser in ipairs(parsers) do
+        vim.cmd('TSInstall ' .. parser)
+      end
+    end
+  })
 
   use('theprimeagen/harpoon')
 
